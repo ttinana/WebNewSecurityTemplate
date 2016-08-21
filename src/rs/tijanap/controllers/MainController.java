@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import rs.tijanap.model.FinInstrument;
-import rs.tijanap.model.WhiskyDTO;
 import rs.tijanap.services.FinInstrumentService;
 
 @Controller
@@ -50,7 +49,7 @@ public class MainController {
 	    return "displayFI";
 	}
 
-	@RequestMapping(value = "/admin/**", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public ModelAndView adminPage() {
 
 		ModelAndView model = new ModelAndView("admin");
@@ -60,8 +59,8 @@ public class MainController {
 
 		return model;
 
-	}
-	@RequestMapping("/admin**submittet")
+	}*/
+/*	@RequestMapping(value ="/admin**submittet", method = RequestMethod.POST)
 	protected ModelAndView handleRequestSubmited(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 
@@ -70,28 +69,8 @@ public class MainController {
 		modelandview.addObject("msg", "submitted!!");
 
 		return modelandview;
-	}
+	}*/
 
-	@RequestMapping(value = "buySuccessfulWhisky", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView view(@RequestBody List<String> newArray) {
 
-		System.out.println(newArray);
-		System.out.println();
-		for (String properties : newArray) {
-			String[] split = properties.split("_");
-			String name = split[0];
-			Integer quantity = Integer.valueOf(split[1]);
-			System.out.println("name:= " + name);
-			System.out.println("quantity:= " + quantity);
-
-			// whiskyService.changeInfoInDB(name, quantity);
-		}
-		WhiskyService whiskyService = new WhiskyService();
-		List<WhiskyDTO> whiskyDTOs = whiskyService.seeAllWhisky();
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("viewAvailableWhisky", whiskyDTOs);
-		modelAndView.setViewName("whisky");
-		return modelAndView;
-	}
 
 }

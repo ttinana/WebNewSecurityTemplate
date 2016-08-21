@@ -1,19 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@page session="true"%>
 <html>
 <body>
-	<h1>Title : ${title}</h1>
-	<h1>Message : ${msg}</h1>
+	<h1>${title}</h1>
+	<h1>${msg}</h1>
+	<p>
+	<a href="/WebNewSecurityTemplate/admin/form?language=en">English</a> | <a href="/WebNewSecurityTemplate/admin/form?language=sr">Serbian</a>
+	
+	</p>
 
-	<form action="admin**submittet">
+	<form:errors path="user.*" />
+	<form action="submission" method="post">
 		<fieldset>
-			<legend>Personal information:</legend>
-			First name:<br> <input type="text" name="firstname"
-				value="Mickey"><br> Last name:<br> <input
-				type="text" name="lastname" value=""><br>
-			<br> <input type="submit" value="Submit">
+			<spring:message code="label.name" /><br> 
+			<input type="text" name="firstname" value="Tijana"><br>
+			<spring:message code="label.lastname" /><br> 
+			<input type="text" name="lastname" value="Pavicic"><br>
+				
+			<spring:message code="label.telephone" /><br> 
+			<input 	type="text" name="telNumber" value="563799"><br>
+
+			<input type="submit" value="Submit">
 		</fieldset>
 	</form>
 

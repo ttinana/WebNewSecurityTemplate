@@ -11,6 +11,12 @@
 <title> Tija @</title>
 </head>
 <body>
-Tija ${msg}
+Tijana ${msg}
+
+<p>
+if you want to login as admin use this: 
+<a href="/WebNewSecurityTemplate/admin/form">I am admin</a>
+
+</p>
 </body>
 </html>
